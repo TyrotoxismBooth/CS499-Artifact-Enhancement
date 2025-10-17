@@ -1,0 +1,51 @@
+{{> header }}
+
+<div class="container mt-5">
+  <h1 class="mb-4">{{title}}</h1>
+
+  {{#if message}}
+    <div class="alert alert-info">{{message}}</div>
+  {{/if}}
+
+  {{#if destinations}}
+    <div id="destinationCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        {{#each destinations}}
+          <button type="button" data-bs-target="destinationCarousel" data-bs-slide-to="{{@index}}" class="{{#if @first}}active{{/if}}" aria-current="{{#if @first}}true{{/if}}" aria-label="Slide {{@index}}"></button>
+        {{/each}}
+      </div>
+
+      <div class="carousel-inner">
+        {{#each destinations}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
+            {{#if image}}
+              <img src="{{image}}" class="d-block w-100" alt="{{name}}" style="max-height: 500px; object-fit: cover;">
+            {{/if}}
+
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+              <h4>{{name}}</h4>
+              <p>{{description}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#destinationCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#destinationCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+
+    </div>
+
+    {{else}}
+      <p class="text-center">No destinations found.</p>
+    {{/if}}
+  </div>
+
+  
+{{> footer }}
