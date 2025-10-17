@@ -1,0 +1,9 @@
+<!-- <pre>{{destinationss | json}}</pre> -->
+ <div *ngIf="isLoggedIn()">
+    <button (click)="addDestination()" class="btn btn-info">Add Destination</button>
+ </div>
+<div class="row">
+    <div *ngFor="let destination of destinations" class="col-3">
+        <app-destination-card [destination]="destination" class="card-deck mt-2"></app-destination-card>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-header">{{ destination.name }}</div>
+    <img src="assets{{ destination.image }}"
+        alt="destination thumbnail" class="card-img-top">
+    <div class="card-body">
+        <p class="card-text" [innerHTML]="destination.description">
+        </p>
+        <div *ngIf="isLoggedIn()">
+            <button (click)="editDestination(destination)" class="btn btn-info">Edit Destination</button>
+        </div>
+    </div>
+</div>
